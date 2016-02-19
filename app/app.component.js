@@ -36,6 +36,16 @@ System.register(['angular2/core', 'angular2/router', "./heroes.component", "./da
                     this.title = 'Tour of heroes';
                 }
                 AppComponent = __decorate([
+                    core_1.Component({
+                        selector: 'my-app',
+                        template: "\n        <h1>{{title}}</h1>\n        <nav>\n            <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n            <a [routerLink]=\"['Heroes']\">Heroes</a>\n        </nav>\n        <router-outlet></router-outlet>\n    ",
+                        styleUrls: ['app/app.component.css'],
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [
+                            router_1.ROUTER_PROVIDERS,
+                            hero_service_1.HeroService
+                        ]
+                    }),
                     router_1.RouteConfig([
                         {
                             path: '/heroes',
@@ -49,20 +59,11 @@ System.register(['angular2/core', 'angular2/router', "./heroes.component", "./da
                             useAsDefault: true
                         },
                         {
-                            path: '/hero-detail',
-                            name: 'Hero-detail',
+                            path: '/detail/:id',
+                            name: 'HeroDetail',
                             component: hero_detail_component_1.HeroDetailComponent,
                         }
-                    ]),
-                    core_1.Component({
-                        selector: 'my-app',
-                        template: "\n        <h1>{{title}}</h1>\n        <nav>\n            <a [routerLink]=\"['Dashboard']\">Dashboard</a>\n            <a [routerLink]=\"['Heroes']\">Heroes</a>\n        </nav>\n        <router-outlet></router-outlet>\n    ",
-                        directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [
-                            router_1.ROUTER_PROVIDERS,
-                            hero_service_1.HeroService
-                        ]
-                    }), 
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;

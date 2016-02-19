@@ -5,6 +5,26 @@ import {HeroesComponent} from "./heroes.component";
 import {DashboardComponent} from "./dashboard.component";
 import {HeroService} from "./hero.service";
 import {HeroDetailComponent} from "./hero-detail.component";
+
+@Component({
+    selector : 'my-app',
+    template : `
+        <h1>{{title}}</h1>
+        <nav>
+            <a [routerLink]="['Dashboard']">Dashboard</a>
+            <a [routerLink]="['Heroes']">Heroes</a>
+        </nav>
+        <router-outlet></router-outlet>
+    `,
+    styleUrls : ['app/app.component.css'],
+    directives :[ROUTER_DIRECTIVES],
+    providers :[
+        ROUTER_PROVIDERS,
+        HeroService
+    ]
+})
+
+
 @RouteConfig([
     {
         path: '/heroes',
@@ -18,27 +38,11 @@ import {HeroDetailComponent} from "./hero-detail.component";
         useAsDefault: true
     },
     {
-        path:'/hero-detail',
-        name:'Hero-detail',
+        path:'/detail/:id',
+        name:'HeroDetail',
         component:HeroDetailComponent,
     }
 ])
-@Component({
-    selector : 'my-app',
-    template : `
-        <h1>{{title}}</h1>
-        <nav>
-            <a [routerLink]="['Dashboard']">Dashboard</a>
-            <a [routerLink]="['Heroes']">Heroes</a>
-        </nav>
-        <router-outlet></router-outlet>
-    `,
-    directives :[ROUTER_DIRECTIVES],
-    providers :[
-        ROUTER_PROVIDERS,
-        HeroService
-    ]
-})
 
 
 
